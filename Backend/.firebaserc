@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "test-ffac2",
+    "staging": "test-ffac2"
+  },
+  "targets": {},
+  "etags": {}
+}

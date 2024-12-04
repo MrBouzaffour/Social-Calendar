@@ -1,0 +1,22 @@
+.draggable-box {
+    position: "absolute";
+    z-Index: 1000;
+    border: 2px solid #888888;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.userID {
+    font-size: 200%;
+    justify-self: end;
+    display: flex;
+    text-align: end;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.accept-button{
+    background-color: #10B1B1;
+}
+
+.reject-button{
+    background-color: #10B1B1;
+}

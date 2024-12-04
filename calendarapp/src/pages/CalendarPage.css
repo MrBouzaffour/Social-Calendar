@@ -1,0 +1,12 @@
+.homeButton {
+    position: absolute; 
+    top: 20px; 
+    left: 20px; 
+    padding: 10px 20px;
+    background-color: #4a90e2;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }

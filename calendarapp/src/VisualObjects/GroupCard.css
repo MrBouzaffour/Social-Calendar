@@ -1,0 +1,24 @@
+.groupCard{
+    position: fixed;
+    width: 250px;
+    height: 500px;
+    padding: 20px;
+    top: 15%;
+    left: 18%; 
+    border: 2px solid #888888;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+.groupBox{
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    background-color: white;
+    width: 200px;
+    text-align: center;
+    position: relative;
+    z-index: 1000;
+}
