@@ -1,0 +1,150 @@
+/* Navbar Styling */
+.navbar {
+  background: linear-gradient(90deg, #1e293b, #111827);
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  padding: 0 20px;
+  color: #fff;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Bell Container */
+.bell-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.bell-icon {
+  background: transparent;
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.notification-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: #ff4757;
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  padding: 5px;
+}
+
+/* Dropdown Menu */
+.dropdown {
+  position: absolute;
+  top: 70px;
+  right: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.notification-item {
+  padding: 10px;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+}
+
+.notification-item:hover {
+  background-color: #eef;
+  cursor: pointer;
+}
+
+.no-notifications {
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+}
+
+/* Toggle Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 12px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #10b1b1;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.switchText {
+  font-size: 12px;
+  margin-left: 60px;
+  color: #ddd;
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-icon {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.nav-icon:hover {
+  color: #10b1b1;
+}
