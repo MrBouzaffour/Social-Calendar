@@ -1,17 +1,18 @@
 import React from 'react';
-import {SideBarButtons} from "./SideBarData";
+import { SideBarButtons } from "./SideBarData";
 import './SideBar.css';
-import { Button } from 'rsuite';
-
 
 const SideBar = () => {
     return (
-        <nav className="side-bar">
-                <ul className="menu-items">
-                    <SideBarButtons/>
-                    {/* <Button>Get Free time</Button> */}
-                </ul>
-            </nav>
-    )
-}
+        <nav className="sidebar">
+            <div className="sidebar-logo">
+                <h2>Social Calendar</h2>
+            </div>
+            <ul className="sidebar-menu">
+                <SideBarButtons />
+            </ul>
+        </nav>
+    );
+};
+
 export default SideBar;

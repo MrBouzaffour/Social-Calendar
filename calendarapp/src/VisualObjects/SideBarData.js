@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import * as ai from 'react-icons/ai'
-import {Link} from "react-router-dom";
+import React, { useState } from 'react';
+import { Link } from "react-router-dom";
+import * as ai from 'react-icons/ai';
 import FriendsCard from './FriendsCard';
 import CalendarCard from './CalendarCard';
 import GroupsCard from './GroupCard';
@@ -8,74 +8,56 @@ import { getCalendarByUserID } from '../services/calendarService';
 import { getCurrentUserID } from '../services/authService';
 
 export const SideBarData = () => {
-
-   
     const userId = getCurrentUserID();
-    const getCalendarId = (userId) =>{
-        try{
-        
-        const calendarId= getCalendarByUserID(userId);
-       return calendarId;
-        }
-        catch (error){
-            console.log('Error fetching user calendar:', error)
+    const calendarId = getCalendarByUserID(userId);
 
-        }
-    }
-    const CalendarID=getCalendarId(userId);
-    
     return [
         {
             title: "My Calendar",
-            class: "sBarText",
-            icon: <ai.AiFillCalendar/>,
-            component: <CalendarCard calendarID={CalendarID}  />,
-            id: "calendar"
+            icon: <ai.AiFillCalendar />,
+            component: <CalendarCard calendarID={calendarId} />,
+            id: "calendar",
         },
         {
             title: "Friends",
-            class: "sBarText",
-            icon: <ai.AiFillBook/>,
+            icon: <ai.AiFillBook />,
             component: <FriendsCard />,
-            id: "friends"
+            id: "friends",
         },
         {
             title: "Groups",
-            class: "sBarText",
-            icon: <ai.AiOutlineOrderedList/>,
-            component: <GroupsCard/>,
-            id: "groups"
-        }
-    ]
-}
+            icon: <ai.AiOutlineOrderedList />,
+            component: <GroupsCard />,
+            id: "groups",
+        },
+    ];
+};
+
 export const SideBarButtons = () => {
-    const sideData = SideBarData()
+    const sideData = SideBarData();
     const [activeComponent, setActiveComponent] = useState(null);
 
-    // Function to handle button click and set active component
     const handleButtonClick = (data) => {
-        if(activeComponent!=null && activeComponent.id==data.id){
-            setActiveComponent(null);
-        }
-        else{
-            setActiveComponent(data);
-        }
-        
-      };
+        setActiveComponent((prev) => (prev?.id === data.id ? null : data));
+    };
 
     return (
-        <div>
+        <>
             {sideData.map((item, index) => (
-                <li key={index} className={"side-bar-tabs"} onClick={() =>handleButtonClick(item)}>
-                    <Link to={""} className={item.class}>
+                <li
+                    key={index}
+                    className={`sidebar-item ${activeComponent?.id === item.id ? "active" : ""}`}
+                    onClick={() => handleButtonClick(item)}
+                >
+                    <Link to={""} className="sidebar-link">
                         {item.icon}
-                        {item.title}
+                        <span>{item.title}</span>
                     </Link>
                 </li>
             ))}
-            <div style={{ padding: "50px", flex: 1 }}>
-                {activeComponent ? activeComponent.component : <div></div>}
+            <div className="sidebar-content">
+                {activeComponent ? activeComponent.component : <p>Select an option</p>}
             </div>
-        </div>
-    )
-}
+        </>
+    );
+};

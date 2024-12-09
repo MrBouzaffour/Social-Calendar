@@ -30,7 +30,7 @@ const RegisterPage = () => {
         <h2>Register</h2>
         <form onSubmit={handleRegister}>
           <div className="form-group">
-            <label>Username</label>
+            <label>Name</label>
             <input
               type="text"
               value={username}
