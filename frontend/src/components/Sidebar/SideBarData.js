@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as ai from 'react-icons/ai';
-import FriendsCard from './FriendsCard';
-import CalendarCard from './CalendarCard';
-import GroupsCard from './GroupCard';
-import { getCalendarByUserID } from '../services/calendarService';
-import { getCurrentUserID } from '../services/authService';
+import FriendsCard from '../Friends/FriendsCard';
+import CalendarCard from '../Calendar/CalendarCard';
+import GroupsCard from '../Groups/GroupCard';
+import { getCalendarByUserID } from '../../services/calendarService';
+import { getCurrentUserID } from '../../services/authService';
 
 export const SideBarData = () => {
     const userId = getCurrentUserID();

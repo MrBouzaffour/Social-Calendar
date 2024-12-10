@@ -6,10 +6,10 @@ import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Button } 
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { addEventToCalendar, editEventInfo, getCalendarEvents, addReminder, deleteEvent } from '../services/calendarService';
+import { addEventToCalendar, editEventInfo, getCalendarEvents, addReminder, deleteEvent } from '../../services/calendarService';
 import { PickersDay } from '@mui/x-date-pickers/PickersDay';
 import './CalendarCard.css';
-import { getCurrentUserID } from '../services/authService';
+import { getCurrentUserID } from '../../services/authService';
 
 
 

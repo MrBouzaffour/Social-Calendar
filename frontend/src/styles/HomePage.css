@@ -1,0 +1,27 @@
+/* Homepage Styles */
+.home-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.home-layout {
+  display: flex;
+  flex: 1;
+  background-color: var(--bg-color);
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.toggle-chat-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: var(--border-radius);
+  padding: 10px 20px;
+}

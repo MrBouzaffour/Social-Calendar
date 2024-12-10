@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { createGroup, getUserGroups, getGroupById } from '../services/groupServices'
-import CalendarCard from './CalendarCard';
+import { createGroup, getUserGroups, getGroupById } from '../../services/groupServices'
+import CalendarCard from '../Calendar/CalendarCard';
 import "./GroupCard.css";
-import ChatPopup from './Chat';
+import ChatPopup from '../Chat/Chat';
 import { useNavigate } from 'react-router-dom';
-import { getFriendsList, getProfile } from '../services/friendsServices';
-import { sendGroupInvite, getGroupInvites } from '../services/groupServices';
+import { getFriendsList, getProfile } from '../../services/friendsServices';
+import { sendGroupInvite, getGroupInvites } from '../../services/groupServices';
 import { Dialog, DialogTitle, DialogContent } from '@mui/material';
 
 
@@ -231,61 +231,67 @@ const GroupsCard =()=> {
   )
 
   return activeComponent ? (
-      activeComponent
-    ) : ( 
-    <div
-      className='groupCard'
-    >
-      <button onClick={() => setOpenDialog(true)}>Create New Group</button>
-      <h3 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>Your Groups</h3>
-      <GroupInvitesBox/>
-      <div>
-        {Object.entries(groups).map(([key,group]) => (
-          <div
-            key={group.id}
-            className='groupBox'
-          >
-            <h4><button onClick={() => invitePopup(group.id)}>+</button>{group.name}</h4>
-            <p>Members: {group.members.length}</p>
-            <button style={{backgroundColor: '#10B1B1', color: 'white', marginRight: '2px'}} onClick={() => toggleChat(group)}>Open Chat</button>
-            <button style={{backgroundColor: '#10B1B1', color: 'white', marginLeft: '2px'}} onClick={() => openCalendar(group)}>Open Calendar</button>
+    activeComponent
+  ) : (
+    <div className="groupCard">
+      <div className="groupCard-header">
+        <button className="create-group-button" onClick={() => setOpenDialog(true)}>
+          + Create New Group
+        </button>
+        <h3>Your Groups</h3>
+      </div>
+      <GroupInvitesBox />
+      <div className="groupCard-content">
+        {Object.entries(groups).map(([key, group]) => (
+          <div key={group.id} className="groupBox">
+            <h4>
+              <span className="group-name">{group.name}</span>
+              <button
+                className="invite-button"
+                onClick={() => invitePopup(group.id)}
+                title="Invite Members"
+              >
+                +
+              </button>
+            </h4>
+            <p className="group-members">Members: {group.members.length}</p>
+            <button className="group-action-button" onClick={() => openCalendar(group)}>
+              Calendar
+            </button>
           </div>
         ))}
-        {addToGroupPopup ?
-          <AddToGroup/> : <></>
-        }
+        {addToGroupPopup ? <AddToGroup /> : null}
       </div>
+  
       <Dialog open={openDialog} onClose={handleCloseDialog}>
         <DialogTitle>Create New Group</DialogTitle>
         <DialogContent>
-        <input
-          type="text"
-          value={groupName}
-          onChange={(e) => setGroupName(e.target.value)}
-          placeholder="Group Name"
-          style={{ marginBottom: '10px', width: '100%' }}
-        />
-        <div style={{ marginTop: '10px' }}>
-          <button onClick={() => {addGroup();handleCloseDialog();}} style={{ marginRight: '10px' }}>
-            Create Group
-          </button>
-          <button onClick={() => {handleCloseDialog();}}>Cancel</button>
-        </div>
+          <input
+            type="text"
+            value={groupName}
+            onChange={(e) => setGroupName(e.target.value)}
+            placeholder="Group Name"
+            className="group-input"
+          />
+          <div className="dialog-actions">
+            <button
+              className="dialog-button create-button"
+              onClick={() => {
+                addGroup();
+                handleCloseDialog();
+              }}
+            >
+              Create Group
+            </button>
+            <button className="dialog-button cancel-button" onClick={handleCloseDialog}>
+              Cancel
+            </button>
+          </div>
         </DialogContent>
       </Dialog>
-
-    {isChatOpen && selectedGroup && (
-        <ChatPopup group={selectedGroup} onClose={toggleChat} />
-    )}
-    {isCalendarOpen && selectedGroupForCalendar && (
-      <CalendarCard
-        calendarID={selectedGroupForCalendar.calendarId}
-        group={selectedGroupForCalendar}
-        onClose={() => setIsCalendarOpen(false)}
-      />
-    )}
     </div>
-    )
-};
+  );
+  
+}  
 export default GroupsCard
 

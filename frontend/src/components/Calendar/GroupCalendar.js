@@ -5,12 +5,12 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Button } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { addEventToCalendar } from '../services/calendarService';
+import { addEventToCalendar } from '../../services/calendarService';
 //import { setTaskReminder, checkForReminders } from '../services/reminderService';
 import { PickersDay } from '@mui/x-date-pickers/PickersDay';
 import './CalendarCard.css';
 import CalendarCard from './CalendarCard';
-import Group, { getGroupById } from '../../../Backend/models/groupModel';
+import Group, { getGroupById } from '../../../../Backend/models/groupModel';
 
 
 const localizer = momentLocalizer(moment);

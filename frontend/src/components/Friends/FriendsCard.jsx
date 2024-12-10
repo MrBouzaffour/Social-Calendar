@@ -1,5 +1,5 @@
-import { searchUsersByName,sendFriendRequest,getFriendRequests,acceptFriendRequest,rejectFriendRequest,getFriendsList,getProfile} from '../services/friendsServices';
-import {getCurrentUserID} from '../services/authService'
+import { searchUsersByName,sendFriendRequest,getFriendRequests,acceptFriendRequest,rejectFriendRequest,getFriendsList,getProfile} from '../../services/friendsServices';
+import {getCurrentUserID} from '../../services/authService'
 import React, { useState, useEffect } from 'react';
 import './FriendsCard.css';
 const FriendsCard = () => {
@@ -159,119 +159,111 @@ const [loading, setLoading] = useState(false);
     }, { once: true });
   };
       
-      
- return (     
-
-  <div
-  className="draggable-box"
-  style={{
-    position: "absolute", // allows free positioning
-    top: position.top,
-    left: position.left,
-    zIndex: 1000, // ensures the box is above other elements
-  }}
-  onMouseDown={handleDrag}
->
-  <h3>Enter Friend's ID</h3>
-  <form onSubmit={handleFriendRequestSubmit}>
-    <input
-      type="text"
-      placeholder="Enter Friend UID"
-      value={friendUid}
-      onChange={(e) => setFriendUid(e.target.value)}
-      required
-    />
-    <button style={{ backgroundColor: "#10B1B1" }} type="submit">
-      Send Friend Request
-    </button>
-  </form>
-  {message && <p>{message}</p>}
-
-  {/* Search for Friends */}
-  <h3>Search for Friends</h3>
-  <form onSubmit={handleSearch}>
-    <input
-      type="text"
-      placeholder="Search by name"
-      value={searchName}
-      onChange={(e) => setSearchName(e.target.value)}
-      className="search-input"
-    />
-    <button className="search-button" type="submit">
-      Search
-    </button>
-  </form>
-  <ul className="search-results">
-  {loading ? (
-    <p>Loading...</p>
-  ) : searchResults.length > 0 ? (
-    searchResults.map((user) => (
-      <li key={user.id}>
-        {user.name}
-        <button
-          style={{ backgroundColor: '#10B1B1' }}
-          onClick={() => handleFriendRequestSubmit(user.id)} // Pass the user ID directly
-        >
-          Add Friend
+  return (
+    <div
+      className="draggable-box"
+      style={{
+        top: position.top,
+        left: position.left,
+        zIndex: 1000,
+      }}
+      onMouseDown={handleDrag}
+    >
+      <h3 className="section-title">Enter Friend's ID</h3>
+      <form onSubmit={handleFriendRequestSubmit} className="friend-form">
+        <input
+          type="text"
+          placeholder="Enter Friend UID"
+          value={friendUid}
+          onChange={(e) => setFriendUid(e.target.value)}
+          required
+          className="form-input"
+        />
+        <button className="form-button" type="submit">
+          Send Friend Request
         </button>
-      </li>
-    ))
-  ) : (
-    <li>No users found</li>
-  )}
-</ul>
+      </form>
+      {message && <p className="status-message">{message}</p>}
 
+      {/* Search Section */}
+      <h3 className="section-title">Search for Friends</h3>
+      <form onSubmit={handleSearch} className="search-form">
+        <input
+          type="text"
+          placeholder="Search by name"
+          value={searchName}
+          onChange={(e) => setSearchName(e.target.value)}
+          className="form-input"
+        />
+        <button className="search-button" type="submit">
+          Search
+        </button>
+      </form>
 
-  {/* Friends List */}
-  <h3>Current Friends</h3>
-  <ul className="friends-list">
-    {friendsList.friends.length > 0 ? (
-      Object.entries(friendProfiles).map(([key, value]) => (
-        <li key={key}>{value.name}</li>
-      ))
-    ) : (
-      <li>No friends</li>
-    )}
-  </ul>
+      <ul className="search-results">
+        {loading ? (
+          <p className="loading-message">Loading...</p>
+        ) : searchResults.length > 0 ? (
+          searchResults.map((user) => (
+            <li key={user.id} className="result-item">
+              {user.name}
+              <button
+                className="add-friend-button"
+                onClick={() => handleFriendRequestSubmit(user.id)}
+              >
+                Add Friend
+              </button>
+            </li>
+          ))
+        ) : (
+          <li className="no-results">No users found</li>
+        )}
+      </ul>
 
-  {/* Friend Requests List */}
-  <h3>Friend Requests</h3>
-  <ul className="friend-requests-list">
-    {friendRequests.length > 0 ? (
-      Object.entries(requestProfiles).map(([key, value]) => (
-        <li key={key}>
-          {value.name}
-          <button
-            className="accept-button"
-            style={{
-              backgroundColor: "#10B1B1",
-              marginTop: "5px",
-              marginBottom: "10px",
-            }}
-            onClick={() => handleAccept(key)}
-          >
-            Accept
-          </button>
-          <button
-            className="reject-button"
-            style={{ backgroundColor: "#10B1B1" }}
-            onClick={() => handleReject(key)}
-          >
-            Reject
-          </button>
-        </li>
-      ))
-    ) : (
-      <li>No pending friend requests</li>
-    )}
-  </ul>
+      {/* Friends List */}
+      <h3 className="section-title">Current Friends</h3>
+      <ul className="friends-list">
+        {friendsList.friends.length > 0 ? (
+          Object.entries(friendProfiles).map(([key, value]) => (
+            <li key={key} className="friend-item">
+              {value.name}
+            </li>
+          ))
+        ) : (
+          <li className="no-results">No friends</li>
+        )}
+      </ul>
 
-  <h4>Your ID</h4>
-  <h3 className="userID">{currentUid}</h3>
-</div>
+      {/* Friend Requests */}
+      <h3 className="section-title">Friend Requests</h3>
+      <ul className="friend-requests-list">
+        {friendRequests.length > 0 ? (
+          Object.entries(requestProfiles).map(([key, value]) => (
+            <li key={key} className="request-item">
+              {value.name}
+              <button
+                className="accept-button"
+                onClick={() => handleAccept(key)}
+              >
+                Accept
+              </button>
+              <button
+                className="reject-button"
+                onClick={() => handleReject(key)}
+              >
+                Reject
+              </button>
+            </li>
+          ))
+        ) : (
+          <li className="no-results">No pending friend requests</li>
+        )}
+      </ul>
 
+      <h4 className="user-id-label">Your ID</h4>
+      <h3 className="user-id">{currentUid}</h3>
+    </div>
   );
-
 };
 
 

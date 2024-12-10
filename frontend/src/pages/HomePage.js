@@ -1,35 +1,32 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './HomePage.css'; // Import CSS file for styling
-import Navbar from '../VisualObjects/Navbar';
-import SideBar from '../VisualObjects/SideBar';
-import Chat from '../VisualObjects/Chat'; // Import the Chat component
+import Navbar from '../components/Navbar/Navbar';
+import SideBar from '../components/Sidebar/SideBar';
+import Chat from '../components/Chat/Chat';
+import '../styles/HomePage.css'
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const [isChatOpen, setIsChatOpen] = useState(false); // State for toggling chat visibility
-
-  const handleLogout = async () => {
-    // await logout();
-    navigate('/login');
-  };
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   return (
-    <div className="home-container">
+    <div className="home-page">
       <Navbar />
-      <SideBar />
-
-      {/* Global Chat Feature */}
+      <div className="home-layout">
+        <SideBar />
+        <div className="main-content">
+          <h1>Welcome to Social Calendar</h1>
+          <p>Select an option from the sidebar to explore more features.</p>
+        </div>
+      </div>
       {isChatOpen && (
         <Chat
-          group={{ name: 'Global Chat' }} // You can replace 'Global Chat' with dynamic group names if needed
+          group={{ name: 'Global Chat' }}
           onClose={() => setIsChatOpen(false)}
         />
       )}
-
-      {/* Button to toggle the chat */}
       <button
-        className="open-chat-button"
+        className="toggle-chat-btn"
         onClick={() => setIsChatOpen((prev) => !prev)}
       >
         {isChatOpen ? 'Close Chat' : 'Open Chat'}

@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Login from './pages/LoginPage';
 import Register from './pages/RegisterPage';
 import Welcome from './pages/HomePage';
-import PrivateRoutes from './components/PrivateRoutes';
-import Calendar from './pages/CalendarPage';
+import PrivateRoutes from './context/PrivateRoutes';
 import ProfilePage from './pages/ProfilePage';
 import { AuthProvider } from './context/AuthContext';
 
@@ -20,7 +19,6 @@ function App() {
           {/* Protect the welcome page using PrivateRoutes */}
           <Route element={<PrivateRoutes />}>
             <Route path="/welcome" element={<Welcome />} />
-            <Route path="/calendar" element={<Calendar />} />
             <Route path="/profile" element={<ProfilePage />} /> {/* Add the profile route */}
           </Route>
         </Routes>

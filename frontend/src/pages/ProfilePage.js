@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { getCurrentProfile  } from '../services/authService'; // met670 : for auth
 import { useNavigate } from 'react-router-dom';
-import './ProfilePage.css';  // Import CSS file for styling
-import Navbar from '../VisualObjects/Navbar';
-import { auth } from '../firebase';
-import SideBar from "../VisualObjects/SideBar";
-import defaultProfilePic from "../VisualObjects/profilePicture.png"
+import '../styles/ProfilePage.css';  // Import CSS file for styling
+import Navbar from '../components/Navbar/Navbar';
+import defaultProfilePic from "../assets/images/profilePicture.png"
 
 const ProfilePage = () => {
   const [message, setMessage] = useState('');

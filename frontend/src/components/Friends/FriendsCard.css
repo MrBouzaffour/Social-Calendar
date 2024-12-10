@@ -1,0 +1,107 @@
+.draggable-box {
+  position: absolute;
+  width: 350px;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: grab;
+  transition: transform 0.3s ease;
+}
+
+.draggable-box:active {
+  cursor: grabbing;
+}
+
+.section-title {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.form-input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.form-button,
+.search-button,
+.add-friend-button {
+  background-color: #10b1b1;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-button:hover,
+.search-button:hover,
+.add-friend-button:hover {
+  background-color: #0e9191;
+}
+
+.status-message {
+  margin-top: 10px;
+  color: #3c763d;
+  font-size: 0.9rem;
+}
+
+.search-results,
+.friends-list,
+.friend-requests-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0;
+  max-height: 150px;
+  overflow-y: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 5px;
+  background-color: #f9fafb;
+}
+
+.result-item,
+.friend-item,
+.request-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.no-results {
+  text-align: center;
+  color: #888;
+}
+
+.accept-button {
+  background-color: #4caf50;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.reject-button {
+  background-color: #f44336;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.user-id-label {
+  font-size: 1rem;
+  margin-top: 20px;
+  color: #666;
+}
+
+.user-id {
+  font-size: 1.5rem;
+  color: #333;
+  text-align: right;
+}

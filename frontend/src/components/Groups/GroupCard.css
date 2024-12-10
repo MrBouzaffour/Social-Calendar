@@ -1,0 +1,107 @@
+/* General GroupCard Styles */
+.groupCard {
+  position: fixed;
+  right: 0; /* Align to the right */
+  top: 0; /* Start at the top */
+  height: 100vh; /* Full height */
+  width: 400px; /* Fixed width */
+  padding: 20px;
+  background-color: #ffffff; /* White background */
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1); /* Subtle shadow to the left */
+  overflow-y: auto; /* Scrollable if content overflows */
+  z-index: 1000;
+}
+
+/* Header */
+.groupCard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.groupCard-header h3 {
+  color: #374151;
+  font-size: 1.5rem;
+}
+
+/* Buttons */
+.create-group-button,
+.invite-button,
+.group-action-button {
+  background-color: #10b1b1;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  margin: 5px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.create-group-button:hover,
+.invite-button:hover,
+.group-action-button:hover {
+  background-color: #0f8f8f;
+}
+
+.dialog-button.create-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.dialog-button.cancel-button {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Group Box */
+.groupBox {
+  margin: 16px 0;
+  background-color: #f9fafb;
+  padding: 10px 0;
+  border-radius: 6px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.groupBox:hover {
+  background-color: #f3f4f6;
+}
+
+.groupBox h4 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.group-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #374151;
+}
+
+/* Dialog Styles */
+.group-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Group Invites */
+.groupInvites {
+  margin: 20px 0;
+  padding: 16px;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}

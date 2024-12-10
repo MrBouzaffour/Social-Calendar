@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import 'rsuite/dist/rsuite.min.css'; 
-import { getNotificationsByUserID } from '../services/notificationService';
-import { getCurrentProfile, getCurrentUserID } from '../services/authService';
+import { getNotificationsByUserID } from '../../services/notificationService';
+import { getCurrentProfile, getCurrentUserID } from '../../services/authService';
 
 const Navbar = () => {
     const navigate = useNavigate();
