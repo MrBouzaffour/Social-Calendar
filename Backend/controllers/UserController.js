@@ -280,7 +280,28 @@ class UserController {
             next(error);
         }
     }
-    
+    /**
+    * @description Search users by name (case-insensitive partial match).
+    * @route GET /api/users/search
+    * @param {Object} req - Express request object, expects `name` in query.
+    * @param {Object} res - Express response object.
+    * @param {Function} next - Express next middleware function.
+    * @returns {Object} JSON array of user profiles matching the search criteria.
+    */
+    static async searchUsersByName(req, res, next) {
+       const { name } = req.query;
+
+       if (!name) {
+           return res.status(400).json({ error: 'Name query parameter is required' });
+       }
+
+       try {
+           const users = await User.searchByName(name);
+           res.status(200).json(users);
+       } catch (error) {
+           next(error);
+       }
+    }
 
 }
 

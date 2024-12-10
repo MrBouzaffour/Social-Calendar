@@ -98,4 +98,17 @@ export const getFriendsList = async () =>{
   }
   
   return await response.json();
-}
+};
+
+
+export const searchUsersByName = async (name) => {
+  const token = localStorage.getItem('token');
+  const response = await fetch(`${API_USER_URL}/search?name=${encodeURIComponent(name)}`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (!response.ok) throw new Error('Search failed');
+  return await response.json();
+};

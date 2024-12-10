@@ -20,3 +20,35 @@
 .reject-button{
     background-color: #10B1B1;
 }
+
+.search-input {
+    margin: 10px 0;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: calc(100% - 20px);
+  }
+  
+  .search-button {
+    background-color: #10b1b1;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-top: 5px;
+    border-radius: 4px;
+  }
+  
+  .add-friend-button {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border-radius: 4px;
+  }
+  
+  .add-friend-button:hover {
+    background-color: #2563eb;
+  }
+  

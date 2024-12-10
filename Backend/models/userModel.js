@@ -303,6 +303,32 @@ class User {
             throw new ValidationError('Error fetching public events: ' + error.message);
         }
     }
+    /**
+    * @description Search users by name (case-insensitive partial match).
+    * @param {string} name - The name to search for.
+    * @returns {Promise<Array>} Array of user profiles matching the search.
+    */
+    static async searchByName(name) {
+       try {
+           const usersSnapshot = await db.collection('users')
+               .where('name', '>=', name)
+               .where('name', '<=', name + '\uf8ff') // Use Firestore range queries for partial matches
+               .get();
+
+           if (usersSnapshot.empty) {
+               return [];
+           }
+
+           return usersSnapshot.docs.map(doc => ({
+               id: doc.id,
+               name: doc.data().name,
+               email: doc.data().email,
+               profilePic: doc.data().profilePic || null,
+           }));
+       } catch (error) {
+           throw new Error('Error searching users by name: ' + error.message);
+       }
+    }
 }
 
 module.exports = User;

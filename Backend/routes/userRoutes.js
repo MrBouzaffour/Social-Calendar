@@ -170,5 +170,11 @@ router.get('/:id/public-events', UserController.getPublicEvents);
  */
 router.get('/profile/:id', UserController.getPublicUserProfile);
 
+/**
+ * @route GET /api/users/search
+ * @description Search users by name
+ * @access Protected - requires user authentication
+ */
+router.get('/search', UserController.searchUsersByName);
 
 module.exports = router;
