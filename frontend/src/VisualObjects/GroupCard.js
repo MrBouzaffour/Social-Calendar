@@ -184,31 +184,42 @@ const GroupsCard =()=> {
   );
 
   const AddToGroup = () => (
-    <div className='addAFriend'>
-      <ul className="friends-list">
-        {console.log(friendProfiles)}
-        {console.log(friendProfiles.length)}
-        <p>Enter User ID</p>
-        <form onSubmit={handleInviteWithId}>
-          <input
+    <div className="addAFriend">
+      <h4>Invite Friends to Group</h4>
+      <form onSubmit={handleInviteWithId} style={{ marginBottom: '10px' }}>
+        <input
           type="text"
           placeholder="Enter User UID"
           value={selectedUid}
           onChange={(e) => setSelectedUid(e.target.value)}
           required
-          />
-        </form>
-        <p>Or choose a friend</p>
-          {Object.entries(friendProfiles).length > 0 ? (
+          style={{
+            padding: '8px',
+            width: 'calc(100% - 20px)',
+            borderRadius: '6px',
+            border: '1px solid #ccc',
+          }}
+        />
+        <button type="submit" style={{ backgroundColor: '#3b82f6', color: 'white' }}>
+          Invite by UID
+        </button>
+      </form>
+      <h5>Choose a Friend</h5>
+      <ul className="friends-list">
+        {Object.entries(friendProfiles).length > 0 ? (
           Object.entries(friendProfiles).map(([key, value]) => (
-            <li key={key}><button onClick={()=>handleInviteToGroup(value.id)}>Invite</button>{value.name}</li> 
+            <li key={key}>
+              {value.name}
+              <button onClick={() => handleInviteToGroup(value.id)}>Invite</button>
+            </li>
           ))
-          ) : (
-            <li>No friends</li>
-          )}
-        </ul>
+        ) : (
+          <li>No friends available</li>
+        )}
+      </ul>
     </div>
   );
+  
 
   const GroupInvitesBox = () => (
     <div className='groupInvites'>
