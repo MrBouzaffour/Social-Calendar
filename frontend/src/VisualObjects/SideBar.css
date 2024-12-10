@@ -1,79 +1,110 @@
+/* Sidebar Base Styling */
 .sidebar {
-    background-color: #1E293B; /* Maintain the same color */
-    width: 260px; /* Fixed width */
-    height: 95vh; /* Smaller height (95% of viewport) */
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 80px; /* Below the navbar */
-    left: 0;
-    padding: 10px; /* Reduce padding */
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Shadow for separation */
-    color: #FFFFFF;
-    z-index: 1000;
-    border-radius: 0 10px 10px 0; /* Optional rounded edges */
-  }
-  
-  /* Logo Section */
-  .sidebar-logo {
-    text-align: center;
-    margin-bottom: 15px; /* Smaller margin for compact layout */
-  }
-  
-  .sidebar-logo h2 {
-    font-size: 18px; /* Slightly smaller font size */
-    color: #FFFFFF;
-    margin: 0;
-  }
-  
-  /* Menu Items */
-  .sidebar-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    flex-grow: 1; /* Ensure items take up available space */
-  }
-  
-  .sidebar-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px; /* Smaller margin between items */
-    cursor: pointer;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  .sidebar-item.active {
-    background-color: #475569; /* Highlight active item */
-    border-left: 4px solid #50d0d0; /* Add visual cue for active item */
-  }
-  
-  .sidebar-item:hover {
-    background-color: #334155; /* Slightly lighter hover effect */
-  }
-  
-  .sidebar-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #FFFFFF;
-    font-size: 14px; /* Slightly smaller font size */
-    width: 100%;
-  }
-  
-  .sidebar-link span {
-    margin-left: 10px;
-    font-size: 14px; /* Match text size with link */
-  }
-  
-  /* Sidebar Content Display */
-  .sidebar-content {
-    margin-top: 10px; /* Reduce spacing */
-    padding: 10px;
-    background-color: #334155;
-    border-radius: 5px;
-    color: #FFFFFF;
-    font-size: 14px;
-  }
-  
+  background-color: #1E293B;
+  height: 95vh;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: width 0.3s ease-in-out;
+}
+
+.sidebar.open {
+  width: 260px;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.sidebar-logo {
+  font-size: 18px;
+  color: #FFFFFF;
+  margin: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.sidebar.collapsed .sidebar-logo {
+  opacity: 0;
+}
+
+.sidebar-toggle {
+  background: none;
+  border: none;
+  color: #FFFFFF;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar.collapsed .sidebar-toggle {
+  transform: rotate(180deg);
+}
+
+/* Menu Items */
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.sidebar-item.active {
+  background-color: #475569;
+  border-left: 4px solid #50d0d0;
+}
+
+.sidebar-item:hover {
+  background-color: #334155;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #E2E8F0;
+  font-size: 14px;
+  width: 100%;
+}
+
+.sidebar-link span {
+  margin-left: 10px;
+  font-size: 14px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.sidebar.collapsed .sidebar-link span {
+  opacity: 0;
+}
+
+/* Sidebar Content */
+.sidebar-content {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #334155;
+  border-radius: 5px;
+  color: #000000;
+  font-size: 14px;
+}

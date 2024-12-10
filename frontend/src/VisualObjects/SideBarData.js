@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import * as ai from 'react-icons/ai';
 import FriendsCard from './FriendsCard';
 import CalendarCard from './CalendarCard';
@@ -33,7 +33,7 @@ export const SideBarData = () => {
     ];
 };
 
-export const SideBarButtons = () => {
+export const SideBarButtons = ({ isOpen }) => {
     const sideData = SideBarData();
     const [activeComponent, setActiveComponent] = useState(null);
 
@@ -46,12 +46,12 @@ export const SideBarButtons = () => {
             {sideData.map((item, index) => (
                 <li
                     key={index}
-                    className={`sidebar-item ${activeComponent?.id === item.id ? "active" : ""}`}
+                    className={`sidebar-item ${activeComponent?.id === item.id ? 'active' : ''}`}
                     onClick={() => handleButtonClick(item)}
                 >
-                    <Link to={""} className="sidebar-link">
+                    <Link to={''} className="sidebar-link">
                         {item.icon}
-                        <span>{item.title}</span>
+                        {isOpen && <span>{item.title}</span>}
                     </Link>
                 </li>
             ))}

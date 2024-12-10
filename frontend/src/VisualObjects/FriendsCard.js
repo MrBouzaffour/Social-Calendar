@@ -1,11 +1,5 @@
-import { sendFriendRequest,
-   getFriendRequests,
-    acceptFriendRequest,
-     rejectFriendRequest,
-      getFriendsList,
-        getProfile} from '../services/friendsServices';
+import { sendFriendRequest,getFriendRequests,acceptFriendRequest,rejectFriendRequest,getFriendsList,getProfile} from '../services/friendsServices';
 import {getCurrentUserID} from '../services/authService'
-import { auth } from '../firebase';
 import React, { useState, useEffect } from 'react';
 const FriendsCard = () => {
 
