@@ -2,35 +2,26 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar/Navbar';
 import SideBar from '../components/Sidebar/SideBar';
-import Chat from '../components/Chat/Chat';
-import '../styles/HomePage.css'
+import '../styles/HomePage.css';
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [activeComponent, setActiveComponent] = useState(null);
 
   return (
     <div className="home-page">
-      <Navbar />
-      <div className="home-layout">
-        <SideBar />
+      <SideBar setActiveComponent={setActiveComponent} />
+      <div className="main-container">
+        <Navbar />
         <div className="main-content">
-          <h1>Welcome to Social Calendar</h1>
-          <p>Select an option from the sidebar to explore more features.</p>
+          {activeComponent || (
+            <>
+              <h1>Welcome to Social Calendar</h1>
+              <p>Select an option from the sidebar to explore more features.</p>
+            </>
+          )}
         </div>
       </div>
-      {isChatOpen && (
-        <Chat
-          group={{ name: 'Global Chat' }}
-          onClose={() => setIsChatOpen(false)}
-        />
-      )}
-      <button
-        className="toggle-chat-btn"
-        onClick={() => setIsChatOpen((prev) => !prev)}
-      >
-        {isChatOpen ? 'Close Chat' : 'Open Chat'}
-      </button>
     </div>
   );
 };

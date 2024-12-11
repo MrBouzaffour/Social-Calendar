@@ -1,27 +1,44 @@
 /* Homepage Styles */
 .home-page {
   display: flex;
-  flex-direction: column;
   height: 100vh;
-}
-
-.home-layout {
-  display: flex;
-  flex: 1;
   background-color: var(--bg-color);
 }
 
-.main-content {
-  flex: 1;
-  padding: 20px;
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background-color: #1e293b;
+  color: white;
+  flex-shrink: 0;
 }
 
-.toggle-chat-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: var(--primary-color);
+/* Main Container */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Navbar */
+.navbar {
+  height: 80px;
+  width: calc(100% - 260px); /* Leaves space for sidebar */
+  background: linear-gradient(90deg, #1e293b, #111827);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
   color: white;
-  border-radius: var(--border-radius);
-  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 260px; /* Start after the sidebar */
+  z-index: 999;
+}
+
+/* Main Content */
+.main-content {
+  margin-top: 80px; /* Push below the navbar */
+  padding: 20px;
+  flex-grow: 1;
+  overflow-y: auto;
 }
