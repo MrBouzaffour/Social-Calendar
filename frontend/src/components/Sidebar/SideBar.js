@@ -53,11 +53,11 @@ const ToggleButton = styled.button`
 `;
 
 const SidebarMenu = styled.ul`
-  flex-grow: 0;
+  flex-grow: 1; /* Ensures the menu takes up available space */
   display: flex;
   flex-direction: column;
   align-items: ${(props) => (props.isOpen ? "flex-start" : "center")};
-  justify-content: center;
+  justify-content: flex-start; /* Align items at the top of the sidebar */
   padding: 10px 0;
   margin: 0;
   list-style: none;
@@ -94,7 +94,8 @@ const Footer = styled.div`
   color: #50d0d0;
   font-size: 12px;
   border-top: 1px solid #333;
-`;
+  margin-top: auto; /* Pushes the footer to the bottom of the sidebar */
+`;;
 
 const SideBar = () => {
   const [isOpen, setIsOpen] = useState(true);
