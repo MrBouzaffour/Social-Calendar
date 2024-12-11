@@ -47,6 +47,11 @@ Before you begin, ensure you have the following installed on your machine:
   # Port for the backend server
   PORT=5000
   ```
+
+4. **Firebase Service Account Key**
+
+   Place your Firebase service account key file (`firebaseServiceAccountKey.json`) in the `backend/firebase-admin` directory. This file is required for Firebase Admin SDK functionalities.
+
 ---
 
 ## Usage
@@ -68,4 +73,3 @@ npm run build
 ```
 
 The output will be stored in the `build/` directory.
-
