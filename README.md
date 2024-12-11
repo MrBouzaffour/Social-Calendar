@@ -43,6 +43,7 @@ Before you begin, ensure you have the following installed on your machine:
    npm install
    ```
 3. **Environment Variables**
+
   To run the project, you need to configure environment variables in a `.env` file.
   ```env
   # Secret key for signing JWTs
