@@ -63,8 +63,6 @@ Start the development server with:
 npm start
 ```
 
-- The application will open in your default web browser at [http://localhost:3000](http://localhost:3000).
-
 ### Build for production
 
 To create an optimized production build, run:
