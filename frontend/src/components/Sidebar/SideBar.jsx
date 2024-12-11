@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { SideBarData } from "./SideBarData";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { SideBarData } from "./SideBarData";
 
 const SidebarContainer = styled.div`
   background-color: #1e293b;
@@ -17,7 +17,6 @@ const SidebarContainer = styled.div`
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
   overflow: hidden;
 `;
-
 
 const SidebarHeader = styled.div`
   position: relative;
@@ -44,7 +43,7 @@ const ToggleButton = styled.button`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-    right: ${(props) => (props.isOpen ? "10px" : "-0px")};
+  right: ${(props) => (props.isOpen ? "10px" : "-0px")};
   background: none;
   border: none;
   color: #fff;
@@ -96,12 +95,18 @@ const Footer = styled.div`
   font-size: 12px;
   border-top: 1px solid #333;
   margin-top: auto; /* Pushes the footer to the bottom of the sidebar */
-`;;
+`;
 
-const SideBar = () => {
+
+
+const SideBar = ({ setActiveComponent }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const toggleSidebar = () => setIsOpen((prev) => !prev);
+
+  const handleMenuClick = (component) => {
+    setActiveComponent(component);
+  };
 
   return (
     <SidebarContainer isOpen={isOpen}>
@@ -113,7 +118,11 @@ const SideBar = () => {
       </SidebarHeader>
       <SidebarMenu isOpen={isOpen}>
         {SideBarData().map((item, index) => (
-          <MenuItem key={index} isOpen={isOpen}>
+          <MenuItem
+            key={index}
+            isOpen={isOpen}
+            onClick={() => handleMenuClick(item.component)}
+          >
             <MenuIcon isOpen={isOpen}>{item.icon}</MenuIcon>
             {isOpen && item.title}
           </MenuItem>

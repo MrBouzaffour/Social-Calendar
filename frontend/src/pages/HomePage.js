@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar/Navbar';
 import SideBar from '../components/Sidebar/SideBar';
 import '../styles/HomePage.css';
 
 const HomePage = () => {
-  const navigate = useNavigate();
   const [activeComponent, setActiveComponent] = useState(null);
 
   return (
