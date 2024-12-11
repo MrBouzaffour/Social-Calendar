@@ -5,18 +5,19 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const SidebarContainer = styled.div`
   background-color: #1e293b;
-  height: 100vh;
+  height: calc(100vh - 70px); /* Adjust height to avoid overlapping with navbar */
   width: ${(props) => (props.isOpen ? "250px" : "70px")};
   transition: width 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: 0;
+  top: 70px; /* Start below the navbar */
   left: 0;
   z-index: 1000;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
   overflow: hidden;
 `;
+
 
 const SidebarHeader = styled.div`
   position: relative;
