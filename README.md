@@ -58,10 +58,19 @@ Before you begin, ensure you have the following installed on your machine:
 
 ### Run the development server
 
-Start the development server with:
+Start the frontend development server with:
 
 ```bash
 npm start
+```
+
+### Start the backend server
+
+Navigate to the backend directory and run the server:
+
+```bash
+cd backend
+node server.js
 ```
 
 ### Build for production
