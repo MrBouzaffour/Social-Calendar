@@ -5,8 +5,6 @@
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Features](#features)
-- [Folder Structure](#folder-structure)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -74,37 +72,7 @@ npm run build
 
 The output will be stored in the `build/` directory.
 
----
 
-## Features
-
-- Responsive sidebar with toggle functionality
-- Notification system with dropdowns
-- Modern navbar with toggle switch for enabling/disabling notifications
-- Dynamic content rendering
-- Fully customizable and extendable
-
----
-
-## Folder Structure
-
-```
-social-calendar/
-├── public/               # Static assets
-├── src/                  # Source code
-│   ├── components/       # React components
-│   │   ├── Navbar/       # Navbar component
-│   │   ├── Sidebar/      # Sidebar component
-│   │   └── Calendar/     # Calendar component
-│   ├── services/         # API calls and service logic
-│   ├── styles/           # Global and component-specific styles
-│   ├── App.js            # Main application file
-│   └── index.js          # Entry point for React
-├── package.json          # npm configuration and dependencies
-└── README.md             # Documentation
-```
-
----
 
 ## Contributing
 
