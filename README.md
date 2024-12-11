@@ -32,7 +32,7 @@ Before you begin, ensure you have the following installed on your machine:
    ```
 2. **Install dependencies**
 
-   Run the following command to install all necessary packages:
+   Run the following command in both folders to install all necessary packages:
 
    ```bash
    npm install
