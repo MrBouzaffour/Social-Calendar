@@ -6,7 +6,6 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 
 ---
 
@@ -84,18 +83,3 @@ We welcome contributions! If you would like to contribute:
 4. Push to the branch (`git push origin feature-name`).
 5. Open a pull request.
 
----
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-
----
-
-## Contact
-
-If you have any questions or need further assistance, feel free to reach out:
-
-- Email: [your-email@example.com](mailto:your-email@example.com)
-- GitHub: [your-username](https://github.com/your-username)
-```
