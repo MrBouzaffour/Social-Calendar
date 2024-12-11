@@ -74,14 +74,6 @@ npm run build
 
 The output will be stored in the `build/` directory.
 
-### Run tests
-
-If your project includes tests, you can run them with:
-
-```bash
-npm test
-```
-
 ---
 
 ## Features
