@@ -3,7 +3,13 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { getNotificationsByUserID } from "../../services/notificationService";
 import { getCurrentUserID } from "../../services/authService";
-import { AiOutlineBell, AiFillBell, AiOutlineUser, AiOutlineHome, AiOutlineLogout } from "react-icons/ai";
+import {
+  AiOutlineBell,
+  AiFillBell,
+  AiOutlineUser,
+  AiOutlineHome,
+  AiOutlineLogout,
+} from "react-icons/ai";
 
 const NavbarContainer = styled.nav`
   background: linear-gradient(90deg, #1e293b, #111827);
@@ -48,7 +54,7 @@ const NotificationCount = styled.span`
 
 const DropdownMenu = styled.div`
   position: absolute;
-  top: 50px; /* Position below the bell */
+  top: 50px;
   right: 0;
   background: white;
   border-radius: 8px;
@@ -60,8 +66,8 @@ const DropdownMenu = styled.div`
   z-index: 2000;
 
   @media (max-width: 500px) {
-    width: 90vw; /* Adjust width for smaller screens */
-    right: 5%; /* Center the dropdown */
+    width: 90vw;
+    right: 5%;
   }
 `;
 
@@ -112,31 +118,95 @@ const NavButton = styled.button`
   }
 `;
 
+const ToggleSwitch = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 12px;
+    border: 2px solid #10b1b1;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: #10b1b1;
+    border-color: #10b1b1;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  .switchText {
+    font-size: 14px;
+    margin-left: 10px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+`;
+
 const Navbar = () => {
   const navigate = useNavigate();
   const [notifications, setNotifications] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [notificationsOn, setGetNotifications] = useState(true);
   const userId = getCurrentUserID();
 
-  useEffect(() => {
-    const fetchNotifications = async () => {
-      try {
-        const fetchedNotifications = await getNotificationsByUserID(userId);
-        setNotifications(fetchedNotifications || []);
-      } catch (error) {
-        console.error("Error fetching notifications:", error);
-      }
-    };
+  const fetchNotifications = async () => {
+    try {
+      const fetchedNotifications = await getNotificationsByUserID(userId);
+      setNotifications(fetchedNotifications || []);
+    } catch (error) {
+      console.error("Error fetching notifications:", error);
+    }
+  };
 
-    fetchNotifications();
-  }, [userId]);
+  const toggleDropdown = async () => {
+    if (!isDropdownOpen && notificationsOn) {
+      await fetchNotifications();
+    }
+    setIsDropdownOpen((prev) => !prev);
+  };
 
-  const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
+  const toggleNotificationsOn = () => setGetNotifications((prev) => !prev);
 
   return (
     <NavbarContainer>
       <NavButtons>
-        {/* Navigation Buttons */}
         <NavButton onClick={() => navigate("/profile")}>
           <AiOutlineUser />
         </NavButton>
@@ -147,15 +217,36 @@ const Navbar = () => {
           <AiOutlineLogout />
         </NavButton>
       </NavButtons>
-      {/* Notifications */}
+
       <NotificationContainer>
         <NotificationBell onClick={toggleDropdown}>
-          {notifications.length > 0 ? <AiFillBell size={24} /> : <AiOutlineBell size={24} />}
-          <NotificationCount count={notifications.length}>
-            {notifications.length > 9 ? "9+" : notifications.length}
-          </NotificationCount>
+          {notificationsOn && notifications.length > 0 ? (
+            <AiFillBell size={24} />
+          ) : (
+            <AiOutlineBell size={24} />
+          )}
+          {notificationsOn && notifications.length > 0 && (
+            <NotificationCount count={notifications.length}>
+              {notifications.length > 9 ? "9+" : notifications.length}
+            </NotificationCount>
+          )}
         </NotificationBell>
-        {isDropdownOpen && (
+
+        <ToggleSwitch>
+          <label className="switch">
+            <input
+              type="checkbox"
+              checked={notificationsOn}
+              onChange={toggleNotificationsOn}
+            />
+            <span className="slider"></span>
+          </label>
+          <span className="switchText">
+            {notificationsOn ? "Enabled" : "Disabled"}
+          </span>
+        </ToggleSwitch>
+
+        {isDropdownOpen && notificationsOn && (
           <DropdownMenu>
             <DropdownHeader>Notifications</DropdownHeader>
             {notifications.length > 0 ? (

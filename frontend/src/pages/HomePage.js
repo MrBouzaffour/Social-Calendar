@@ -1,23 +1,20 @@
-import React, { useState } from 'react';
-import Navbar from '../components/Navbar/Navbar';
-import SideBar from '../components/Sidebar/SideBar';
-import '../styles/HomePage.css';
+import React, { useState } from "react";
+import Navbar from "../components/Navbar/Navbar";
+import SideBar from "../components/Sidebar/SideBar";
+import CalendarCard from "../components/Calendar/CalendarCard";
+import GroupsCard from "../components/Groups/GroupCard";
+import "../styles/HomePage.css";
 
 const HomePage = () => {
-  const [activeComponent, setActiveComponent] = useState(null);
+  const [activeComponent, setActiveComponent] = useState(<CalendarCard />);
 
   return (
     <div className="home-page">
       <SideBar setActiveComponent={setActiveComponent} />
-      <div className="main-container">
+      <div className="content-container">
         <Navbar />
-        <div className="main-content">
-          {activeComponent || (
-            <>
-              <h1>Welcome to Social Calendar</h1>
-              <p>Select an option from the sidebar to explore more features.</p>
-            </>
-          )}
+        <div className="content-wrapper">
+          {activeComponent}
         </div>
       </div>
     </div>
